@@ -92,16 +92,38 @@ OP-2021-001	10/05/2021	CRE	INIT	AG Rabat
 OP-2021-001	01/06/2021	VAL	VALIDE	AG Casa
 OP-2021-001	15/06/2021	DEB	PAYE	Téléservice
 
-🧪 Testing
----
-Test Case	Expected Result
-Login with any credentials	Navigates to Consultation screen
-Click [Annuler]	Clears all input fields
-Click [Afficher]	Shows OP Assuré screen with table
-Click on a table row	Row highlights (selected for Detail view)
-Click [Historique]	Shows status history table
-Click [Detail]	Shows details of selected payment order
-Click [Retour] on any screen	Returns to previous screen
-Click [Quitter]	Returns to login screen
----
+# OP/TP Administrative App (CNSS)
 
+Application web interne pour la gestion administrative **OP / TP** (CNSS) : connexion, consultation des assurés, création/visualisation des ordres de paiement et suivi des activités.
+
+## Fonctionnalités
+- **Authentification** via API (`/api/login`)
+- **Consultation Assuré** (résolution Assuré) via `/api/assure/resolve`
+- **Ordres de paiement** via `/api/payment-orders`
+- **Interface moderne** (Next.js App Router) avec navigation (Accueil, Profil, Journaux)
+- **Journaux d’activité** côté client (localStorage)
+
+## Stack technique
+- **Next.js 16** (App Router) + React
+- **TypeScript**
+- **Tailwind CSS**
+- **Oracle DB** (`oracledb`)
+
+## Structure du projet
+- `b_TgEZDj494dv/` : application Next.js
+- `database/` : scripts SQL + init
+
+## Configuration (env)
+Créer `b_TgEZDj494dv/.env.local` à partir de `b_TgEZDj494dv/.env.example` puis renseigner :
+- `ORACLE_USER`
+- `ORACLE_PASSWORD`
+- `ORACLE_CONNECT_STRING`
+- `LOGIN_PASSWORD` (optionnel selon votre mode d’auth)
+
+> Ne jamais committer `.env.local`.
+
+## Démarrage
+```bash
+cd b_TgEZDj494dv
+npm install
+npm run dev
