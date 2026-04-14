@@ -1,0 +1,17 @@
+# Create a docker-compose.yml file with the following content:
+    version: '3'
+    services:
+      oracle:
+        image: container-registry.oracle.com/database/express:latest
+        ports:
+          - "1521:1521"
+          - "5500:5500"
+        environment:
+          - ORACLE_PWD=admin123
+          - ORACLE_CHARACTERSET=AL32UTF8
+        volumes:
+          - oracle_data:/opt/oracle/oradata
+        shm_size: '2gb'
+    
+    volumes:
+      oracle_data:
